@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Exe2</title>
+
+        <!--
+            (Exe2) Faça um script que sorteie através de uma função, chamada por um botão de 
+            formulário, 10 números aleatórios entre 0 e 100 e armazene esses 10 números em um 
+            vetor, calcule e mostre através de funções:
+            a) O vetor original dentro de uma tabela com 10 colunas
+            b) A soma dos números pares deste vetor
+            c) A soma dos números ímpares deste vetor
+            OBS: comando para fazer o sorteio Math.round(Math.random()*100), os dados deverão ser 
+            exibidos dentro de um elemento HTML5 com a propriedade innerHTML.
+        -->
+    </head>
+    <body>
+        <button onclick="sorteio()">Clique aqui</button>
+
+        <div id="resultado">
+            <table border="2">
+                <thead>
+                    <th> Números</th>
+                </thead>
+                <tbody id="tabelaResultado">
+                    <th></th>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="resultadoImpares">
+            <table border="2">
+                <thead>
+                    <th> Soma dos números ímpares</th>
+                </thead>
+                <tbody id="tabelaResultadoImpar">
+                    <th></th>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="resultadoPares">
+            <table border="2">
+                <thead>
+                    <th> Soma dos números pares</th>
+                </thead>
+                <tbody id="tabelaResultadoPar">
+                    <th></th>
+                </tbody>
+            </table>
+        </div>
+
+        <script>
+            var random = Math.round(Math.random()*100);
+           
+            function sorteio () {
+                var num = []
+                for (var i = 0; i<10; i++){
+                num.push(Math.round(Math.random()*100))
+                }
+
+                var linha = ""
+                var numPar = 0
+                var numImpar = 0
+
+                for (var i = 0; i<num.length; i++){
+
+                    linha +="<tr>"+
+                            "<td>"+num[i]+"</td>"+
+                            "</tr>"
+                if(num[i] % 2 ===0 ){
+                    numPar += num[i]
+                }
+                else{
+                    numImpar += num[i]               
+                }
+                    document.getElementById("tabelaResultado").innerHTML= linha
+                    document.getElementById("tabelaResultadoImpar").innerHTML= numImpar
+                    document.getElementById("tabelaResultadoPar").innerHTML= numPar
+                }
+            }
+        </script>
+
+    </body>
+</html>
